@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Diri - Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--secondary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-picture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .about-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill {
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Experience Section */
+        .experience-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .experience-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .experience-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .experience-date {
+            background: var(--accent);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 250px;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(67, 97, 238, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            bottom: 0;
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="home">
+        <div class="container">
+            <img src="poto.jpeg" alt="Foto profesional seorang laki-laki muda dengan latar belakang blur kota metropolitan, mengenakan kemeja formal dengan senyum ramah" class="profile-picture animate">
+            <div class="header-content">
+                <h1 class="animate delay-1">Rudi Irawan</h1>
+                <p class="animate delay-1">Web Developer | computer technician | Network Engineer</p>
+                <a href="#contact" class="btn animate delay-2">Hubungi Saya</a>
+            </div>
+            <div class="social-links animate delay-3">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="https://wa.me/6285349493666" class="social-link"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Siapa Saya?</h3>
+                    <p>Halo! Saya seorang lulusan baru dari SMK Negeri 1 Kongbeng di Jurusan Teknik Komputer dan Jaringan dengan pengalaman kurang lebih 3 tahun. Saya memiliki keinginan untuk belajar mandiri tentang pemograman dan membangan website.</p>
+                    <p>Saya menyukai setiap aspek dari proses pengembangan web, dari konsep awal sampai penyelesaian akhir. Portofolio saya mencakup berbagai proyek dari tugas-tugas sekolah dan proyek saya pribadi.</p>
+                    <p>Di luar sekolah, saya senang iseng membangun website , mempelajari hal baru, dan mencari teknologi terbaru.</p>
+                    
+                    <h3 style="margin-top: 30px;">Keahlian Saya</h3>
+                    <div class="about-skills">
+                        <div class="skill">HTML</div>
+                        <div class="skill">Hardware</div>
+                        <div class="skill">Software</div>
+                        <div class="skill">network Engineer</div>
+                        <div class="skill">design topology</div>
+                        <div class="skill">hosting website</div>
+                        <div class="skill">arduino </div>
+                        <div class="skill">Gamers</div>
+                    </div>
+                </div>
+                <div class="about-details">
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: 600;">Nama Lengkap:</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee;">Rudi Irawan</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: 600;">Tanggal Lahir:</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee;">27 February 2007</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: 600;">Alamat:</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee;">Kutai Timur, Indonesia</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: 600;">Email:</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee;">Irwntkj@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: 600;">Telepon:</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #eee;"><a href="https://wa.me/6285349493666">0853-4949-3666</a></td>
+                        </tr>
+                    </table>
+                    <a href="CV.Rudi Irawan.pdf" class="btn" style="margin-top: 30px; display: inline-block;">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section" style="background: #f5f7ff;">
+        <div class="container">
+            <h2 class="section-title">Pengalaman & Pendidikan</h2>
+            <div class="experience-container">
+                <div class="experience-item animate">
+                    <div class="experience-date">2025 - Sekarang</div>
+                    <h3>Lulusan SMK Negeri 1 Kongbeng</h3>
+                    <p>Teknik Komputer dan Jaringan</p>
+                    <p>Saya adalah lulusan baru dari SMK Negeri 1 Kongbeng dengan Bersekolah selama 3 Tahun.</p>
+                </div>
+                <div class="experience-item animate delay-1">
+                    <div class="experience-date">2019 - 2022</div>
+                    <h3>Lulusan SMP Negeri 2 Muara Wahau</h3>
+                    <p>Muara Wahau</p>
+                    <p>Saya adalah salah satu alumni dari SMP Negeri 2 Muara Wahau angkatan 14 </p>
+                </div>
+                <div class="experience-item animate delay-2">
+                    <div class="experience-date">2013 - 2019</div> 
+                    <h3>SD Negeri 008 Muara Wahau</h3>
+                    <p>Muara Wahau</p>
+                    <p>Saya adalah salah satu alumni dari SD Negeri 008 Muara Wahau. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title">Portofolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="img/bangun.jpeg" alt="Tampilan depan aplikasi e-commerce modern dengan tata letak bersih dan warna biru dominan" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Membangun Jaringan</h3>
+                        <p>Sebuah layanan internet berbasis media converter (HTB).</p>
+                        <a href="#" class="btn" style="background: white; color: var(--primary); margin-top: 15px;">Lihat Proyek</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="img/merakit.jpeg" alt="Dasbor analitik bisnis dengan visualisasi data modern dan grafik interaktif" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Merakit Robotik</h3>
+                        <p>Sebuah teknologi robotik yang terbuat dari komponen yaitu arduino uno dan smartphone sebagai remote.</p>
+                        <a href="#" class="btn" style="background: white; color: var(--primary); margin-top: 15px;">Lihat Proyek</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="img/perbaikan.jpeg" alt="Antarmuka mobile banking dengan desain minimalis dan navigasi user-friendly" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Computer Repair</h3>
+                        <p>Memperbaiki komputer dengan mengganti sebuat pasta thermal.</p>
+                        <a href="#" class="btn" style="background: white; color: var(--primary); margin-top: 15px;">Lihat Proyek</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="background: #f5f7ff;">
+        <div class="container">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Alamat Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Subjek">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Pesan Anda" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Rudi Irawan. Seluruh hak cipta dilindungi.</p>
+            <div class="social-links" style="margin-top: 20px;">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('[placeholder="Nama Lengkap"]').value;
+            const message = this.querySelector('[placeholder="Pesan Anda"]').value;
+            const whatsappUrl = `https://wa.me/6285349493666?text=Halo,%20saya%20${encodeURIComponent(name)}.%20${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            this.reset();
+        });
+        
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+            // Set initial state
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Dark mode toggle (optional)
+        const darkModeToggle = document.createElement('div');
+        darkModeToggle.innerHTML = '<button id="darkModeToggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: var(--dark); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2);"><i class="fas fa-moon"></i></button>';
+        document.body.appendChild(darkModeToggle);
+        
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+                document.documentElement.style.setProperty('--light', '#121212');
+                document.documentElement.style.setProperty('--dark', '#f8f9fa');
+            } else {
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+                document.documentElement.style.setProperty('--light', '#f8f9fa');
+                document.documentElement.style.setProperty('--dark', '#212529');
+            }
+        });
+    </script>
+</body>
+</html>
+
